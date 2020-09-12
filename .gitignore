@@ -8,7 +8,9 @@
 /.Trash/
 /tmp/*
 /vars/*
-ssm/
+build/
+dist/
+*.egg-info/
 
 # overrides
 !.gitkeep
