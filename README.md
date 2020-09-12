@@ -1,29 +1,29 @@
-# SSM Parameter Store Manager
+# SSM Parameter Manager
 
-Get and set parameters stored in AWS SSM.
+Get and set AWS SSM parameters.
 
 ## Installation
 
 Install latest version:
 
 ```
-pip install git+https://git@github.com/craighurley/ssmpsm.git
+pip install git+https://git@github.com/craighurley/ssmpm.git
 ```
 
 Install specific version:
 
 ```
-pip install git+https://git@github.com/craighurley/ssmpsm.git@1.0.0
+pip install git+https://git@github.com/craighurley/ssmpm.git@1.0.0
 ```
 
 ## Usage
 
 ```
 Usage:
-    ssmpsm get [-s] [-p AWS_PROFILE]
-    ssmpsm set FILE [-d] [-p AWS_PROFILE]
-    ssmpsm (-h | --help)
-    ssmpsm (-v | --version)
+    ssmpm get [-s] [-p AWS_PROFILE]
+    ssmpm set FILE [-d] [-p AWS_PROFILE]
+    ssmpm (-h | --help)
+    ssmpm (-v | --version)
 
 Arguments:
     get           Get parameters.
@@ -40,7 +40,7 @@ Options:
 
 ### FILE Format
 
-`ssmpms` determines what to do with an entry based on the first character(s).  Examples work best to describe the options:
+`ssmpm` determines what to do with an entry based on the first character(s).  Examples work best to describe the options:
 
 ```
 /create/string=foo

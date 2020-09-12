@@ -8,15 +8,15 @@ with open("README.md", "r") as fh:
 install_requirements = ["boto3>=1.14.0", "docopt" >= "0.6.2", "termcolor>=1.1.0"]
 
 setup(
-    name="ssmpsm",
+    name="ssmpm",
     version=__version__,
     author="Craig Hurley",
     author_email="craighurley78@gmail.com",
     license="MIT",
-    description="SSM Parameter Store Manager",
+    description="SSM Parameter Manager",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/craighurley/ssmpsm",
+    url="https://github.com/craighurley/ssmpm",
     packages=find_packages(),
     keywords="ssm, parameter, aws",
     classifiers=[
@@ -27,5 +27,5 @@ setup(
         "License :: OSI Approved :: MIT License",
     ],
     python_requires=">=3.8",
-    scripts=["bin/ssmpsm"],
+    scripts=["bin/ssmpm"],
 )
