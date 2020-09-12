@@ -10,7 +10,7 @@ import boto3
 from docopt import docopt
 from termcolor import colored
 
-COMMAND_VERSION = "1.0.1"
+COMMAND_VERSION = "1.0.3"
 COMMAND_NAME = os.path.basename(sys.argv[0]).lower()
 USAGE_TEXT = """command_basename command_version
 
