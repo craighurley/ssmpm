@@ -4,16 +4,16 @@ Get and set AWS SSM parameters.
 
 ## Installation
 
-Install latest version:
+Install from pypi:
 
+```sh
+pip install ssmpm
 ```
+
+Install from github:
+
+```sh
 pip install git+https://git@github.com/craighurley/ssmpm.git
-```
-
-Install specific version:
-
-```
-pip install git+https://git@github.com/craighurley/ssmpm.git@1.0.0
 ```
 
 ## Usage
