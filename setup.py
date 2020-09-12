@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-__version__ = "1.0.0"
+COMMAND_VERSION = "1.0.1"
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -9,7 +9,7 @@ install_requirements = ["boto3>=1.14.0", "docopt" >= "0.6.2", "termcolor>=1.1.0"
 
 setup(
     name="ssmpm",
-    version=__version__,
+    version=COMMAND_VERSION,
     author="Craig Hurley",
     author_email="craighurley78@gmail.com",
     license="MIT",

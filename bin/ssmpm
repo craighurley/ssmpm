@@ -10,6 +10,8 @@ import boto3
 from docopt import docopt
 from termcolor import colored
 
+COMMAND_VERSION = "1.0.1"
+COMMAND_NAME = os.path.basename(sys.argv[0]).lower()
 USAGE_TEXT = """command_basename command_version
 
 Usage:
@@ -39,8 +41,6 @@ FILE format example:
     -!*/delete/securestring=
 """
 
-COMMAND_VERSION = "1.0.0"
-COMMAND_NAME = os.path.basename(sys.argv[0]).lower()
 USAGE_TEXT = USAGE_TEXT.replace("command_basename", COMMAND_NAME)
 USAGE_TEXT = USAGE_TEXT.replace("command_version", COMMAND_VERSION)
 
