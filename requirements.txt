@@ -7,4 +7,5 @@ pycodestyle
 pylint
 rope
 termcolor
+twine
 yamllint
