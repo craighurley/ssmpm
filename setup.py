@@ -12,10 +12,11 @@ setup(
     version=__version__,
     author="Craig Hurley",
     author_email="none@example.com",
+    license="MIT",
     description="Get/set AWS SSM parameters",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    url="https://github.com/craighurley/ssmpsm",
     packages=find_packages(),
     keywords="ssm, parameter, aws",
     classifiers=[
@@ -26,4 +27,5 @@ setup(
         "License :: OSI Approved :: MIT License",
     ],
     python_requires=">=3.8",
+    scripts=["bin/ssmpsm"],
 )
