@@ -51,12 +51,6 @@ Options:
 -!*/delete/securestring=
 ```
 
-## Development
-
-```sh
-pip install -r requirements
-```
-
 ## Links
 
 - <https://docs.aws.amazon.com/cli/latest/reference/ssm/>
