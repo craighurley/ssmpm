@@ -1,0 +1,16 @@
+.DS_Store
+.envrc
+.python-version
+.vscode/
+*.log
+*.ini
+**/__pycache__/
+/.Trash/
+/tmp/*
+/vars/*
+ssm/
+
+# overrides
+!.gitkeep
+!.pre-commit-config.yaml
+!vars/template.yaml
