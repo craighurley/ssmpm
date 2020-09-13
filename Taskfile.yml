@@ -1,0 +1,43 @@
+version: '3'
+
+tasks:
+
+  update-pip:
+    desc: Update pip requirements
+    cmds:
+      - pip install -Ur requirements.txt
+
+  update-version:
+    desc: Update version in setup.py and bin/ssmpm
+    vars:
+      TAG:
+        sh: git tag -l --points-at HEAD
+    cmds:
+      - echo "{{.TAG}}" | grep -E "[0-9]+\.[0-9]+\.[0-9]+"
+      - sed -i -e 's/^COMMAND_VERSION = ".*/COMMAND_VERSION = "{{.TAG}}"/g' setup.py
+      - sed -i -e 's/^COMMAND_VERSION = ".*/COMMAND_VERSION = "{{.TAG}}"/g' ./bin/ssmpm
+
+  clean:
+    desc: Clean previously built pacakges
+    cmds:
+      - rm -fr build dist *.egg-info
+      - mkdir build dist
+
+  build:
+    desc: Build distribution package
+    cmds:
+      - task: update-version
+      - task: clean
+      - python setup.py sdist bdist_wheel
+
+  deploy-test:
+    desc: Deploy package to test.pypi.org
+    cmds:
+      - task: build
+      - python -m twine upload --repository testpypi dist/*
+
+  deploy-prod:
+    desc: Deploy package to pypi.org
+    cmds:
+      - task: build
+      - python -m twine upload dist/*
