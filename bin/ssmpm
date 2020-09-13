@@ -96,11 +96,10 @@ def do_set():
             else:
                 delete_parameter(key[1:])
         elif key.startswith("!"):
-            k = key[1:]
-            if k.startswith("*"):
-                create_parameter(k[1:], value, "SecureString")
+            if key[1:].startswith("*"):
+                create_parameter(key[2:], value, "SecureString")
             else:
-                create_parameter(k, value)
+                create_parameter(key[1:], value)
         elif key.startswith("*"):
             upsert_parameter(key[1:], value, "SecureString")
         else:
