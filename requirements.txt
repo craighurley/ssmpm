@@ -6,6 +6,8 @@ pre-commit
 pycodestyle
 pylint
 rope
+setuptools
 termcolor
 twine
+wheel
 yamllint
