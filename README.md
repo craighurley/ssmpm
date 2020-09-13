@@ -43,12 +43,14 @@ Options:
 `ssmpm` determines what to do with an entry based on the first character(s).  Examples work best to describe the options:
 
 ```
-/create/string=foo
--/delete/string=bar
-*/create/securestring=password
-!/create/string/but/do/not/update=foo
-!*/create/securestring/but/do/not/update=bar
--!*/delete/securestring=
+/create/string1=foo
+*/create/securestring1=password
+!/create/string2/but/do/not/update=foo
+!*/create/securestring2/but/do/not/update=bar
+-/delete/string1=
+-*/delete/securestring1=
+-!/delete/string2=
+-!*/delete/securestring2=
 ```
 
 ## Links
