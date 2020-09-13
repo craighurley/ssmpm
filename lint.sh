@@ -8,7 +8,7 @@ yamllint --version
 
 # python
 echo Linting python files
-pylint --rcfile=setup.cfg ./*.py
+pylint --rcfile=setup.cfg ./bin/*
 
 # yaml
 echo Linting yaml files
