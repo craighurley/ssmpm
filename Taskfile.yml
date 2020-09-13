@@ -1,6 +1,50 @@
 version: '3'
 
+vars:
+  PYTHON_VERSION: 3.8.1
+
 tasks:
+
+  build:
+    desc: Build distribution package
+    cmds:
+      - task: update-version
+      - task: clean
+      - python setup.py sdist bdist_wheel
+
+  clean:
+    desc: Clean previously built pacakges
+    cmds:
+      - rm -fr build dist *.egg-info
+      - mkdir build dist
+
+  deploy-prod:
+    desc: Deploy package to pypi.org
+    cmds:
+      - task: build
+      - python -m twine upload dist/*
+
+  deploy-test:
+    desc: Deploy package to test.pypi.org
+    cmds:
+      - task: build
+      - python -m twine upload --repository testpypi dist/*
+
+  test:
+    desc: Install package into a clean virtualenv for testing
+    dir: test
+    vars:
+      TAG:
+        sh: git tag -l --points-at HEAD
+    cmds:
+      - echo "{{.TAG}}" | grep -E "[0-9]+\.[0-9]+\.[0-9]+"
+      - cmd: pyenv virtualenv-delete -f test
+        ignore_error: true
+      - pyenv virtualenv {{.PYTHON_VERSION}} test
+      - pyenv local test
+      - pip install -U pip
+      - pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ssmpm=={{.TAG}}
+      - ssmpm -v
 
   update-pip:
     desc: Update pip requirements
@@ -16,28 +60,3 @@ tasks:
       - echo "{{.TAG}}" | grep -E "[0-9]+\.[0-9]+\.[0-9]+"
       - sed -i -e 's/^COMMAND_VERSION = ".*/COMMAND_VERSION = "{{.TAG}}"/g' setup.py
       - sed -i -e 's/^COMMAND_VERSION = ".*/COMMAND_VERSION = "{{.TAG}}"/g' ./bin/ssmpm
-
-  clean:
-    desc: Clean previously built pacakges
-    cmds:
-      - rm -fr build dist *.egg-info
-      - mkdir build dist
-
-  build:
-    desc: Build distribution package
-    cmds:
-      - task: update-version
-      - task: clean
-      - python setup.py sdist bdist_wheel
-
-  deploy-test:
-    desc: Deploy package to test.pypi.org
-    cmds:
-      - task: build
-      - python -m twine upload --repository testpypi dist/*
-
-  deploy-prod:
-    desc: Deploy package to pypi.org
-    cmds:
-      - task: build
-      - python -m twine upload dist/*
