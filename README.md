@@ -10,7 +10,7 @@ Install from pypi:
 pip install ssmpm
 ```
 
-Install from github:
+Install from GitHub:
 
 ```sh
 pip install git+https://git@github.com/craighurley/ssmpm.git
@@ -43,15 +43,12 @@ Options:
 `ssmpm` determines what to do with an entry based on the first character(s).  Examples work best to describe the options:
 
 ```
-#ignored=true
-/create/string1=foo
-*/create/securestring1=password1
-!/create/string2/but/do/not/update=foo
-!*/create/securestring2/but/do/not/update=password2
--/delete/string1=
--*/delete/securestring1=
--!/delete/string2=
--!*/delete/securestring2=
+#comment
+/create/string=foo
+*/create/securestring=password
+!/create/string/but/do/not/update=bar
+!*/create/securestring/but/do/not/update=password
+-/delete/anything=true
 ```
 
 ## Links

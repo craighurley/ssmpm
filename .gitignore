@@ -2,15 +2,15 @@
 .envrc
 .python-version
 .vscode/
-*.log
+*.egg-info/
 *.ini
+*.log
 **/__pycache__/
 /.Trash/
 /tmp/*
 /vars/*
 build/
 dist/
-*.egg-info/
 
 # overrides
 !.gitkeep

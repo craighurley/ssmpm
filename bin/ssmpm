@@ -33,12 +33,12 @@ Options:
     -v --version  Show version.
 
 FILE format example:
+    #comment
     /create/string=foo
-    -/delete/string=bar
     */create/securestring=password
-    !/create/string/but/do/not/update=foo
+    !/create/string/but/do/not/update=bar
     !*/create/securestring/but/do/not/update=password
-    -!*/delete/securestring=
+    -/delete/anything=true
 """
 
 USAGE_TEXT = USAGE_TEXT.replace("command_basename", COMMAND_NAME)
