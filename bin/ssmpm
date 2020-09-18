@@ -10,13 +10,13 @@ import boto3
 from docopt import docopt
 from termcolor import colored
 
-COMMAND_VERSION = "1.0.4"
+COMMAND_VERSION = "1.0.5"
 COMMAND_NAME = os.path.basename(sys.argv[0]).lower()
 USAGE_TEXT = """command_basename command_version
 
 Usage:
-    command_basename get [-s] [-p AWS_PROFILE]
-    command_basename set FILE [-d] [-p AWS_PROFILE]
+    command_basename get [-s] [-p AWS_PROFILE] [-r AWS_REGION]
+    command_basename set FILE [-d] [-p AWS_PROFILE] [-r AWS_REGION]
     command_basename (-h | --help)
     command_basename (-v | --version)
 
@@ -29,6 +29,7 @@ Options:
     -d            Perform a dryrun.
     -h --help     Show this screen.
     -p PROFILE    AWS profile to use.
+    -r REGION     AWS region to use.
     -s            Get secret value.
     -v --version  Show version.
 
@@ -246,8 +247,10 @@ if __name__ == "__main__":
     cmdargs = docopt(USAGE_TEXT, version=COMMAND_VERSION)
 
     try:
-        if cmdargs["-p"]:
-            session = boto3.session.Session(profile_name=cmdargs["-p"])
+        if cmdargs["-p"] or cmdargs["-r"]:
+            profile = cmdargs["-p"] if cmdargs["-p"] else None
+            region = cmdargs["-r"] if cmdargs["-r"] else None
+            session = boto3.session.Session(profile_name=profile, region_name=region)
             ssmclient = session.client("ssm")
         else:
             ssmclient = boto3.client("ssm")

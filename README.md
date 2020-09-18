@@ -20,8 +20,8 @@ pip install git+https://git@github.com/craighurley/ssmpm.git
 
 ```
 Usage:
-    ssmpm get [-s] [-p AWS_PROFILE]
-    ssmpm set FILE [-d] [-p AWS_PROFILE]
+    ssmpm get [-s] [-p AWS_PROFILE] [-r AWS_REGION]
+    ssmpm set FILE [-d] [-p AWS_PROFILE] [-r AWS_REGION]
     ssmpm (-h | --help)
     ssmpm (-v | --version)
 
@@ -34,6 +34,7 @@ Options:
     -d            Perform a dryrun.
     -h --help     Show this screen.
     -p PROFILE    AWS profile to use.
+    -r REGION     AWS region to use.
     -s            Get secret value.
     -v --version  Show version.
 ```
