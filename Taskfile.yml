@@ -57,7 +57,7 @@ tasks:
       TAG:
         sh: git tag -l --points-at HEAD
     cmds:
-      - echo "{{.TAG}}" | grep -E "[0-9]+\.[0-9]+\.[0-9]+"
+      - echo "{{.TAG}}" | grep -E "^[0-9]+\.[0-9]+\.[0-9]+"
       - grep 'COMMAND_VERSION = "{{.TAG}}"' setup.py
       - grep 'COMMAND_VERSION = "{{.TAG}}"' ./bin/ssmpm
 
@@ -67,6 +67,6 @@ tasks:
       TAG:
         sh: git tag -l --points-at HEAD
     cmds:
-      - echo "{{.TAG}}" | grep -E "[0-9]+\.[0-9]+\.[0-9]+"
+      - echo "{{.TAG}}" | grep -E "^[0-9]+\.[0-9]+\.[0-9]+"
       - sed -i -e 's/^COMMAND_VERSION = ".*/COMMAND_VERSION = "{{.TAG}}"/g' setup.py
       - sed -i -e 's/^COMMAND_VERSION = ".*/COMMAND_VERSION = "{{.TAG}}"/g' ./bin/ssmpm
