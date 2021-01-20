@@ -1,7 +1,7 @@
 version: '3'
 
 vars:
-  PYTHON_VERSION: 3.8.1
+  PYTHON_VERSION: 3.9.1
 
 tasks:
 
